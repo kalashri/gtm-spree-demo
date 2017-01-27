@@ -25,7 +25,8 @@ gem 'spree_auth_devise', '~> 3.1.0'
 gem 'spree_gateway', '~> 3.1.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'aws-sdk-v1'
+gem 'aws-sdk', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
