@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201175680) do
+ActiveRecord::Schema.define(version: 20171109093130) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 20161201175680) do
   add_index "spree_adjustments", ["eligible"], name: "index_spree_adjustments_on_eligible"
   add_index "spree_adjustments", ["order_id"], name: "index_spree_adjustments_on_order_id"
   add_index "spree_adjustments", ["source_id", "source_type"], name: "index_spree_adjustments_on_source_id_and_source_type"
+
+  create_table "spree_assemblies_parts", force: :cascade do |t|
+    t.integer "assembly_id",                            null: false
+    t.integer "part_id",                                null: false
+    t.integer "count",                      default: 1, null: false
+    t.boolean "variant_selection_deferred"
+  end
 
   create_table "spree_assets", force: :cascade do |t|
     t.integer  "viewable_id"
@@ -307,6 +314,12 @@ ActiveRecord::Schema.define(version: 20161201175680) do
   add_index "spree_orders", ["store_id"], name: "index_spree_orders_on_store_id"
   add_index "spree_orders", ["user_id", "created_by_id"], name: "index_spree_orders_on_user_id_and_created_by_id"
 
+  create_table "spree_part_line_items", force: :cascade do |t|
+    t.integer "line_item_id",             null: false
+    t.integer "variant_id",               null: false
+    t.integer "quantity",     default: 1
+  end
+
   create_table "spree_payment_capture_events", force: :cascade do |t|
     t.decimal  "amount",     precision: 10, scale: 2, default: 0.0
     t.integer  "payment_id"
@@ -407,7 +420,7 @@ ActiveRecord::Schema.define(version: 20161201175680) do
   add_index "spree_product_properties", ["property_id"], name: "index_spree_product_properties_on_property_id"
 
   create_table "spree_products", force: :cascade do |t|
-    t.string   "name",                 default: "",   null: false
+    t.string   "name",                 default: "",    null: false
     t.text     "description"
     t.datetime "available_on"
     t.datetime "deleted_at"
@@ -416,11 +429,13 @@ ActiveRecord::Schema.define(version: 20161201175680) do
     t.string   "meta_keywords"
     t.integer  "tax_category_id"
     t.integer  "shipping_category_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.boolean  "promotionable",        default: true
     t.string   "meta_title"
     t.datetime "discontinue_on"
+    t.boolean  "can_be_part",          default: false, null: false
+    t.boolean  "individual_sale",      default: true,  null: false
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on"
