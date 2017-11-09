@@ -23,6 +23,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spree', '~> 3.1.0'
 gem 'spree_auth_devise', '~> 3.1.0'
 gem 'spree_gateway', '~> 3.1.0'
+gem 'spree_product_assembly', github: 'spree-contrib/spree-product-assembly',
+                              branch: '3-0-stable'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'aws-sdk-v1'
