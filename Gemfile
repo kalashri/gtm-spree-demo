@@ -27,11 +27,9 @@ gem 'spree_gateway', '~> 3.3'
 #                               branch: '3-0-stable'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'aws-sdk-v1'
-gem 'aws-sdk', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem "aws-sdk-s3", require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
