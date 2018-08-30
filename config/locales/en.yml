@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  spree:
+    promotion_rule_types:
+      order_quantity:
+        name: 'Order Quantity'
+        description: 'Order quantity meets these criteria'
+    eligibility_errors:
+      messages:
+        order_quantity_less_than: This coupon code can't be applied to order with quantity less than %{amount}.
+        order_quantity_less_than_or_equal: This coupon code can't be applied to order with quantity less than or equal to %{amount}.
+        order_quantity_more_than: This coupon code can't be applied to order with quantity greater than %{amount}.
+        order_quantity_more_than_or_equal: This coupon code can't be applied to order with quantity greater than or equal to %{amount}.
