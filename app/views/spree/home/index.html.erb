@@ -1,0 +1,29 @@
+<% @body_id = 'home-page' %>
+<% content_for :sidebar do %>
+  <div data-hook="homepage_sidebar_navigation">
+    <%= render partial: 'spree/shared/taxonomies' %>
+  </div>
+<% end %>
+
+<div data-hook="homepage_products" id="homepage_products">
+  <% cache(cache_key_for_products) do %>
+    <%= render partial: 'spree/shared/products', locals: { products: @products } %>
+  <% end %>
+</div>
+
+<script>
+productInfo = [];
+productImpressions = <%= raw(@products.map do |product|
+  {
+    name: product.name,
+    price: product.price.to_d,
+    id: product.id
+  }
+  end.to_json) %> ;
+dataLayer.push({
+  'ecommerce': {
+    'currencyCode': 'USD',                      
+    'impressions': productImpressions
+  }
+});
+</script>
