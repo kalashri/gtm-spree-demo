@@ -17,3 +17,5 @@
 /tmp
 /public/spree/
 storage/*
+/config/database.yml
+/config/secrets.yml
