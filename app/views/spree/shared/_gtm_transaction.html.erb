@@ -4,6 +4,7 @@
     <% end %>
     <% if @order.present? and @order.user.present? %>
        dataLayer.push({'userid': '<%= @order.user.id %>'});
+       dataLayer.push({'userName': '<%= @order.user.name %>'});
     <% end %>
   
     <% if flash[:commerce_tracking] and @order.present? %>
