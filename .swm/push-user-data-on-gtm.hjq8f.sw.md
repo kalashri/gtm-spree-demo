@@ -4,7 +4,7 @@ name: Push user data on GTM
 file_version: 1.0.2
 app_version: 0.7.5-0
 file_blobs:
-  app/views/spree/shared/_gtm_transaction.html.erb: b890e684c8e328edcf87054538a5604efc4a709e
+  app/views/spree/shared/_gtm_transaction.html.erb: e7143121c87f61db5bd41b9d8694c7bfa11cf5b1
 ---
 
 We have to push user id into GTM
@@ -16,10 +16,11 @@ We have to push user id into GTM
 ⬜ 4          <% end %>
 🟩 5          <% if @order.present? and @order.user.present? %>
 🟩 6             dataLayer.push({'userid': '<%= @order.user.id %>'});
-🟩 7          <% end %>
-⬜ 8        
-⬜ 9          <% if flash[:commerce_tracking] and @order.present? %>
-⬜ 10       
+🟩 7             dataLayer.push({'userName': '<%= @order.user.name %>'});
+🟩 8          <% end %>
+⬜ 9        
+⬜ 10         <% if flash[:commerce_tracking] and @order.present? %>
+⬜ 11       
 ```
 
 <br/>
